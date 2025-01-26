@@ -1,6 +1,6 @@
 import re
 
-# Precompile regex patterns
+# Precompila padrões regex para diferentes bandeiras de cartões de crédito
 CARD_BRANDS = {
     'Visa': re.compile(r'^4[0-9]{12}(?:[0-9]{3})?$'),
     'MasterCard': re.compile(r'^5[1-5][0-9]{14}$'),
@@ -13,6 +13,12 @@ CARD_BRANDS = {
 def validar_bandeira_cartao(numero_cartao):
     """
     Valida a bandeira do cartão de crédito com base no número do cartão.
+    
+    Parâmetros:
+    numero_cartao (str): O número do cartão de crédito a ser validado.
+    
+    Retorna:
+    str: O nome da bandeira do cartão de crédito ou "Bandeira desconhecida" se não for reconhecida.
     """
     for bandeira, pattern in CARD_BRANDS.items():
         if pattern.fullmatch(numero_cartao):
